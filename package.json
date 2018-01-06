@@ -1,0 +1,14 @@
+{
+  "name": "node-react-redux-boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate code for React-Redux App served using NodeJS",
+  "main": "app.js",
+  "scripts": {
+    "prepare-test": "npm run build-test --prefix client && npm run build-test --prefix server",
+    "prepare": "npm run build --prefix client && npm run build --prefix server",
+    "start-test": "npm run start-test --prefix build/test/server",
+    "start": "npm run start --prefix build/production/server"
+  },
+  "author": "Drop Bear Dan (dan.ess.001@gmail.com)",
+  "license": "MIT"
+}

@@ -1,0 +1,7 @@
+.vscode/
+build/
+
+**/node_modules
+**/auth
+
+package-lock.json

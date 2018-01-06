@@ -1,0 +1,24 @@
+.keyframes(@name, @frames) {
+    @-webkit-keyframes @name {
+        @frames();
+    };
+
+    @-moz-keyframes @name {
+        @frames();
+    };
+
+    @-o-keyframes @name {
+        @frames();
+    };
+    
+    @keyframes @name {
+        @frames();
+    };
+}
+
+.animation(@sequence) {
+    -webkit-animation: @sequence;
+    -moz-animation: @sequence;
+    -o-animation: @sequence;
+    animation: @sequence;
+}

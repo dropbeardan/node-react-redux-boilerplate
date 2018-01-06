@@ -1,5 +1,5 @@
 {
-  "name": "node-react-redux-boilerplate",
+  "name": "node-react-redux-boilerplate-server",
   "version": "1.0.0",
   "description": "API server and service proxy for landing content of dbplayground.com",
   "main": "app.js",

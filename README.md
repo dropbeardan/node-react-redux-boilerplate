@@ -16,6 +16,7 @@ Boilerplate code for a React app served by NodeJS and Webpack-Dev-Server.
 1. React (Client DOM)
 1. Redux (REACT Pattern)
 1. LESS (CSS)
+1. Axios (HTTP Request)
 1. React/Redux Router (Routing)
 1. Babel (Transpiler)
 1. Webpack (Packager, Builder)

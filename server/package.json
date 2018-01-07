@@ -6,9 +6,9 @@
   "scripts": {
     "build-test": "cross-env NODE_ENV=test gulp",
     "build": "cross-env NODE_ENV=production gulp",
-    "preview": "cross-env NODE_ENV=dev PORT=8081 node src/app.js",
-    "start-test": "cross-env NODE_ENV=test PORT=10100 node app.js",
-    "start": "cross-env NODE_ENV=production PORT=10100 node app.js",
+    "preview": "cross-env NODE_ENV=dev PORT=25000 node src/app.js",
+    "start-test": "cross-env NODE_ENV=test HTTP_PORT=25000 HTTPS_PORT=26000 node app.js",
+    "start": "cross-env NODE_ENV=production HTTP_PORT=25000 HTTPS_PORT=26000 node app.js",
     "test": "jest"
   },
   "author": "Drop Bear Dan (dan.ess.001@gmail.com)",

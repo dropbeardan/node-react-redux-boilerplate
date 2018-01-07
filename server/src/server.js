@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const path = require('path');
+const http = require('http');
+const https = require('https');
 
 const routes = require('./routes');
 
@@ -42,11 +43,24 @@ const serverFactory = (port, staticDir) => {
 
     server.all('*', routes);
 
-    server.listen(port, () => {
-        console.log(`[${process.env.NODE_ENV}] Server started @ Port ${port}`);
+    let httpServer = http.createServer(server);
+    httpServer.listen(httpPort, () => {
+        console.log(`[${process.env.NODE_ENV}] HTTP Server started @ Port ${httpPort}`);
     });
 
-    return server;
+    let httpsServer = null;
+
+    if (httpsPort && httpsOptions) {
+        httpsServer = https.createServer(httpsOptions, server);
+        httpsServer.listen(httpsPort, () => {
+            console.log(`[${process.env.NODE_ENV}] HTTPS Server started @ Port ${httpsPort}`);
+        });
+    }
+
+    return {
+        http: httpServer,
+        https: httpsServer
+    };
 };
 
 module.exports = serverFactory;

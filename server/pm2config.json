@@ -6,7 +6,8 @@
       "watch": true,
       "env": {
         "NODE_ENV": "production",
-        "PORT": 10100
+        "HTTP_PORT": 25000,
+        "HTTPS_PORT": 26000
       }
     }
   ]

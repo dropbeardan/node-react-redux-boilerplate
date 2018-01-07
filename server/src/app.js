@@ -8,4 +8,10 @@ const staticDir = {
     production: path.join(__dirname, '..', 'client')
 };
 
-const app = server(process.env.PORT, staticDir[process.env.NODE_ENV]);
+// HTTPS TLS options.
+const httpsOptions = {
+    key: fs.readFileSync(path.join(__dirname, 'auth', 'tls', 'private.key.pem')),
+    cert: fs.readFileSync(path.join(__dirname, 'auth', 'tls', 'origin.certificate.pem'))
+};
+
+const app = server(process.env.HTTP_PORT, process.env.HTTPS_PORT, httpsOptions, staticDir[process.env.NODE_ENV]);

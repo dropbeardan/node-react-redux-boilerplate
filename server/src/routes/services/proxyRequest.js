@@ -5,7 +5,7 @@ const routeWrapper = require('../../helpers/routeWrapper');
 const requiredFields = [];
 
 const services = [
-    { name: 'demo-server', baseURL: 'http://localhost:10100' }
+    { name: 'service', baseURL: 'http://localhost:25001' }
 ];
 
 // Proxy request to Service endpoints if registered.

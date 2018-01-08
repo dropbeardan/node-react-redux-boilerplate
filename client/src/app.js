@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 // Routing.
-import { IndexRoute, Route, Router, browserHistory } from 'react-router';
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
+import { IndexRoute, Route, Router } from 'react-router';
+import { routerReducer } from 'react-router-redux';
 
 // Store.
 import store from './store';
+
+// Browser History.
+import history from './history';
 
 // Layouts.
 import { App, Err404, ServicedTimer, Timer } from './Components/Layouts';

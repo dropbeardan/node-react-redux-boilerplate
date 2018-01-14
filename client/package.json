@@ -4,9 +4,9 @@
   "description": "Boilerplate code for React-Redux",
   "main": "index.js",
   "scripts": {
-    "build-test": "cross-env NODE_ENV=test PORT=8080 webpack --config webpack.config.js",
-    "build": "cross-env NODE_ENV=production PORT=10100 webpack --config webpack.config.js",
-    "preview": "cross-env NODE_ENV=dev PORT=10100 webpack-dev-server --hot --colors --config webpack.config.js",
+    "build-test": "cross-env NODE_ENV=test PORT=23000 webpack --config webpack.config.js",
+    "build": "cross-env NODE_ENV=production PORT=25000 webpack --config webpack.config.js",
+    "preview": "cross-env NODE_ENV=dev PORT=25000 webpack-dev-server --hot --colors --config webpack.config.js",
     "test": "jest"
   },
   "author": "Drop Bear Dan (dan.ess.001@gmail.com)",
@@ -21,7 +21,6 @@
     "react-redux": "^5.0.6",
     "react-router": "^3.2.0",
     "react-router-redux": "^4.0.0",
-    "react-youtube": "^7.5.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
   },

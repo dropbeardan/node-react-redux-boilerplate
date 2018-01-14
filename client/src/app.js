@@ -15,9 +15,6 @@ import history from './history';
 // Layouts.
 import { App, Err404, ServicedTimer, Timer } from './Components/Layouts';
 
-// Browser History.
-const history = syncHistoryWithStore(browserHistory, store);
-
 const app = document.getElementById('app');
 ReactDOM.render(
     <Provider store={store}>

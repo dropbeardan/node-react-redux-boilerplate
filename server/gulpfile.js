@@ -18,16 +18,15 @@ gulp.task('build-app', async () => {
     let srcDir = path.join(__dirname);
     let outputDir = path.join(__dirname, '..', 'build', buildEnv, 'server');
 
-    gutil.log(`Transferring SRC, process.yml and package.json files from ${srcDir} to ${outputDir}.`);
+    gutil.log(`Transferring SRC, pm2config.json and package.json files from ${srcDir} to ${outputDir}.`);
 
     gulp
         .src([
             `!${path.join(srcDir, 'src', '**', 'tests/')}`,
             `!${path.join(srcDir, 'src', '**', 'tests', '**', '*')}`,
             path.join(srcDir, 'src', '**', '*'),
-            path.join(srcDir, 'process.yml'),
-            path.join(srcDir, 'package.json'),
-            path.join(srcDir, 'pm2config.json')
+            path.join(srcDir, 'pm2config.json'),
+            path.join(srcDir, 'package.json')            
         ])
         .pipe(gulp.dest(outputDir));
 

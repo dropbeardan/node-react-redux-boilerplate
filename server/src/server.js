@@ -6,7 +6,7 @@ const https = require('https');
 const translateSubdomain = require('./routes/middlewares/translateSubdomain');
 const routes = require('./routes');
 
-const serverFactory = (port, staticDir) => {
+const serverFactory = (httpPort, httpsPort, httpsOptions, staticDir) => {
 
     let server = express();
 

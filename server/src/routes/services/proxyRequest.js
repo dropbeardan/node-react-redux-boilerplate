@@ -23,6 +23,7 @@ const proxyRequest = async (req, res, next) => {
             method: req.method,
             baseURL: endpoint.baseURL,
             url: req.path,
+            headers: req.headers,
             data: req.body
         });
 

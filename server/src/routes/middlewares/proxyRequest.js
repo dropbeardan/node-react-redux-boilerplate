@@ -8,7 +8,7 @@ const services = [
     { prefix: 'subdomain.example.com', baseURL: 'http://localhost:25001' }
 ];
 
-const proxyRequest = (req, res, next) => {
+const proxyRequest = async (req, res, next) => {
 
     let service = services.find((service) => {
         return (

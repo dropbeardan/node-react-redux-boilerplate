@@ -8,6 +8,11 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const buildEnv = process.env.NODE_ENV;
 const activePort = process.env.PORT;
+const baseURL = {
+    dev: `http://localhost:${activePort}`,
+    test: `http://localhost:${activePort}`,
+    production: `http://localhost:${activePort}`
+};
 
 const outputDir = path.join(__dirname, '..', 'build', buildEnv, 'client');
 
@@ -16,6 +21,7 @@ const extractText = new ExtractTextPlugin({
 });
 
 const constructHTML = new HTMLWebpackPlugin({
+    baseUrl: `"${baseURL[buildEnv]}/"`,
     favicon: './src/Assets/resources/favicon.ico',
     inject: 'body',
     title: 'Node React Redux Boilerplate',
@@ -30,12 +36,6 @@ const copyAssets = new CopyWebpackPlugin([
 ]);
 
 const setEnvVars = () => {
-    const baseURL = {
-        dev: `http://localhost:${activePort}`,
-        test: `http://localhost:${activePort}`,
-        production: `http://localhost:${activePort}`
-    };
-
     return new webpack.DefinePlugin({
         NODE_ENV: JSON.stringify(buildEnv),
         'process.env.NODE_ENV': JSON.stringify(buildEnv),

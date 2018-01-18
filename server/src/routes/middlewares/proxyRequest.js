@@ -23,29 +23,44 @@ const proxyRequest = async (req, res, next) => {
     }
 
     try {
-        let dataStream = [];
+        if (req.path.indexOf('/resources') == 0) {
+            let dataStream = [];
 
-        // Enable stream mode for all requests incase of any direct file transfers.
-        await axios({
-            method: req.method,
-            baseURL: service.baseURL,
-            url: req.path,
-            headers: req.headers,
-            data: req.body,
-            responseType: 'stream'
-        })
-            .then((response) => {
-                response.data.on('data', (chunk) => {
-                    dataStream.push(chunk);
-                });
+            // Enable stream mode for resource requests to handle streaming file transfers.
+            await axios({
+                method: req.method,
+                baseURL: service.baseURL,
+                url: req.path,
+                headers: req.headers,
+                data: req.body,
+                responseType: 'stream'
+            })
+                .then((response) => {
+                    response.data.on('data', (chunk) => {
+                        dataStream.push(chunk);
+                    });
 
-                response.data.on('end', () => {
-                    return res
-                        .status(response.status)
-                        .set(response.headers)
-                        .send(Buffer.concat(dataStream));
+                    response.data.on('end', () => {
+                        return res
+                            .status(response.status)
+                            .set(response.headers)
+                            .send(Buffer.concat(dataStream));
+                    });
                 });
+        } else {
+            let response = await axios({
+                method: req.method,
+                baseURL: service.baseURL,
+                url: req.path,
+                headers: req.headers,
+                data: req.body
             });
+
+            return res
+                .status(response.status)
+                .set(response.headers)
+                .send(String(response.data));
+        }
 
     } catch (err) {
         if (err.response) {

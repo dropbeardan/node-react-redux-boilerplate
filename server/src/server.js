@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const http = require('http');
 const https = require('https');
 
-const translateSubdomain = require('./routes/middlewares/translateSubdomain');
 const routes = require('./routes');
 
 const serverFactory = (httpPort, httpsPort, httpsOptions, staticDir) => {
@@ -41,9 +40,6 @@ const serverFactory = (httpPort, httpsPort, httpsOptions, staticDir) => {
 
         next();
     });
-
-    // Remap subdomain paths.
-    server.use(translateSubdomain);
 
     server.all('*', routes);
 

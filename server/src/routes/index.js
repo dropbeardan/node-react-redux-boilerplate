@@ -1,14 +1,17 @@
 const routes = require('express').Router();
 
+const proxyRequest = require('./middlewares/proxyRequest');
+
 const demos = require('./demos');
 const frontEnd = require('./frontEnd');
 const resources = require('./resources');
-const services = require('./services');
+
+// Check for Proxy Service.
+routes.use(proxyRequest);
 
 // Normal Routes.
 routes.use('/demos', demos);
 routes.use('/resources', resources);
-routes.use('/services', services);
 
 // Non-API Route, to be handled by Statics.
 routes.use('/', frontEnd);

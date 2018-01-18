@@ -6,9 +6,9 @@ const translateSubdomain = (req, res, next) => {
 
     let route = subdomains.find((subdomain) => {
         return (
-            (req.headers.referer && req.headers.referer.indexOf(subdomain) !== -1) ||
-            (req.headers.origin && req.headers.origin.indexOf(subdomain) !== -1) ||
-            (req.headers.host && req.headers.host.indexOf(subdomain) !== -1)
+            (req.headers.referer && req.headers.referer.indexOf(subdomain.prefix) !== -1) ||
+            (req.headers.origin && req.headers.origin.indexOf(subdomain.prefix) !== -1) ||
+            (req.headers.host && req.headers.host.indexOf(subdomain.prefix) !== -1)
         );
     });
 

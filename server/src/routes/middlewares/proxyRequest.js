@@ -23,18 +23,30 @@ const proxyRequest = async (req, res, next) => {
     }
 
     try {
-        let response = await axios({
+        let dataStream = [];
+
+        // Enable stream mode for all requests incase of any direct file transfers.
+        await axios({
             method: req.method,
             baseURL: service.baseURL,
             url: req.path,
             headers: req.headers,
-            data: req.body
-        });
+            data: req.body,
+            responseType: 'stream'
+        })
+            .then((response) => {
+                response.data.on('data', (chunk) => {
+                    dataStream.push(chunk);
+                });
 
-        return res
-            .status(response.status)
-            .set(response.headers)
-            .send(response.data);
+                response.data.on('end', () => {
+                    return res
+                        .status(response.status)
+                        .set(response.headers)
+                        .send(Buffer.concat(dataStream));
+                });
+            });
+
     } catch (err) {
         if (err.response) {
             return res

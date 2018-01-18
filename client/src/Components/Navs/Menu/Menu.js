@@ -17,7 +17,7 @@ export default class Menu extends React.Component {
         super(props);
 
         this.state = {
-            logo: '/images/logo.png',
+            logo: '/resources/logo.png',
             isOpen: false
         };
 

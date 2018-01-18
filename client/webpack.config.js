@@ -16,7 +16,7 @@ const extractText = new ExtractTextPlugin({
 });
 
 const constructHTML = new HTMLWebpackPlugin({
-    favicon: './src/Assets/icons/favicon.ico',
+    favicon: './src/Assets/resources/favicon.ico',
     inject: 'body',
     title: 'Node React Redux Boilerplate',
     template: './src/index.ejs'
@@ -24,8 +24,8 @@ const constructHTML = new HTMLWebpackPlugin({
 
 const copyAssets = new CopyWebpackPlugin([
     {
-        from: path.join(__dirname, 'src', 'Assets', 'images'),
-        to: path.join(outputDir, 'images')
+        from: path.join(__dirname, 'src', 'Assets', 'resources'),
+        to: path.join(outputDir, 'resources')
     }
 ]);
 

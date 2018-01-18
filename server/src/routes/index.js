@@ -2,12 +2,12 @@ const routes = require('express').Router();
 
 const demos = require('./demos');
 const frontEnd = require('./frontEnd');
-const images = require('./images');
+const resources = require('./resources');
 const services = require('./services');
 
 // Normal Routes.
 routes.use('/demos', demos);
-routes.use('/images', images);
+routes.use('/resources', resources);
 routes.use('/services', services);
 
 // Non-API Route, to be handled by Statics.

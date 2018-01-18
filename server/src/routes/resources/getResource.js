@@ -4,12 +4,12 @@ const routeWrapper = require('../../helpers/routeWrapper');
 
 const requiredFields = [];
 
-const getImage = async (req, res, next) => {
+const getResource = async (req, res, next) => {
     let options = {
-        root: path.join(req.app.get('staticDir'), 'images')
+        root: path.join(req.app.get('staticDir'), 'resources')
     };
 
-    return res.sendFile(req.params.imageId, options, (err) => {
+    return res.sendFile(req.params.resourceName, options, (err) => {
         if (err && err.status == 404) {
             return res
                 .status(404)
@@ -22,4 +22,4 @@ const getImage = async (req, res, next) => {
     });
 };
 
-module.exports = routeWrapper(requiredFields, getImage);
+module.exports = routeWrapper(requiredFields, getResource);

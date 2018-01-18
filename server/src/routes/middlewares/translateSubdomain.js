@@ -4,7 +4,7 @@ const translateSubdomain = (req, res, next) => {
         { prefix: 'service.example.com', route: '/api/service' }
     ];
 
-    let route = subdomains.find((subdomain) => {
+    let subdomain = subdomains.find((subdomain) => {
         return (
             (req.headers.referer && req.headers.referer.indexOf(subdomain.prefix) !== -1) ||
             (req.headers.origin && req.headers.origin.indexOf(subdomain.prefix) !== -1) ||
@@ -12,8 +12,8 @@ const translateSubdomain = (req, res, next) => {
         );
     });
 
-    if (route) {
-        req.path = `${route}${req.path}`;
+    if (subdomain) {
+        req.path = `${subdomain.route}${req.path}`;
     }
 
     next();

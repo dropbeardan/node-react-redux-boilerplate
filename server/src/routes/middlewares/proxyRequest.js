@@ -59,7 +59,7 @@ const proxyRequest = async (req, res, next) => {
             return res
                 .status(response.status)
                 .set(response.headers)
-                .send(JSON.stringify(response.data));
+                .send(typeof (response.data) == 'number' ? String(response.data) : response.data);
         }
 
     } catch (err) {
